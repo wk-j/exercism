@@ -7,7 +7,6 @@ let (|DivBy|_|) divisor i  =
 
 let leapYear (year: int): bool =
     match year with
-    | DivBy 100 | DivBy 400 -> false
-    | DivBy 4 -> true
+    | DivBy 4 & (DivBy 100 | DivBy 400) -> true
     | _ -> false
 
