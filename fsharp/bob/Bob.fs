@@ -32,12 +32,11 @@ let (|Forceful|_|) (input: string) =
     |> isSome
 
 let (|Silence|_|) (input: string) =
-    input.Trim() |> (=) "" |> isSome
+    input.Trim() = "" |> isSome
 
 let (|Question|_|) (input: string) = 
-    input 
-    |> toChar
-    |> Seq.last |> (=) '?' |> isSome
+    input.Trim().EndsWith("?")
+    |> isSome
 
 let response (input: string): string = 
     match input with
